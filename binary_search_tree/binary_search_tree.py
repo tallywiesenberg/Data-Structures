@@ -11,13 +11,34 @@ This part of the project comprises two days:
 """
 class BSTNode:
     def __init__(self, value):
+        # Value is supposed to be an int/float
         self.value = value
         self.left = None
         self.right = None
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        curr_node = BSTNode(self.value)
+        # print('curr node:', curr_node.value)
+        # print(self.value)
+        while curr_node is not None:
+            if value <= self.value:
+                # print('Value:', value)
+                # print('current node value:', curr_node.value)
+                if self.left is None:
+                    self.left = BSTNode(value)
+                    # print(self.left.value)
+                else:
+                    curr_node = curr_node.left
+            else:
+                # print('Value:', value)
+                # print('current node value:', curr_node.value)
+                if self.right is None:
+                    self.right = BSTNode(value)
+                    # print(self.right.value)
+                else:
+                    curr_node = curr_node.right
+                    
 
     # Return True if the tree contains the value
     # False if it does not
@@ -63,7 +84,7 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)
@@ -80,6 +101,6 @@ print("elegant methods")
 print("pre order")
 bst.pre_order_dft()
 print("in order")
-bst.in_order_dft()
+# bst.in_order_dft()
 print("post order")
-bst.post_order_dft()  
+# bst.post_order_dft()  
