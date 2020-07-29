@@ -13,21 +13,20 @@ return elements in Last In First Out order.
 
 from singly_linked_list.singly_linked_list import LinkedList, Node
 class Stack:
-    def __init__(self, storage=[]):
+    def __init__(self, size=0, storage=[]):
         self.size = 0
         self.storage = storage
 
     def __len__(self):
         if self.storage == LinkedList():
-            count = 0
             node = self.storage.head
             while node.get_next() is not None:
                 node = node.get_next()
-                count +=1
+                self.size +=1
         else:
-            count = len(self.storage)
+            self.size = len(self.storage)
         
-        return count
+        return self.size
 
     def push(self, value):
         if self.storage == LinkedList():
