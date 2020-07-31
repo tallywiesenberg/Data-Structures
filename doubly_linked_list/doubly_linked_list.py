@@ -29,6 +29,7 @@ class DoublyLinkedList:
     def add_to_head(self, value):
         node = ListNode(value, prev=None, next=self.head)
         self.head.prev = node
+        self.head = self.head.prev
         self.length += 1
     """
     Removes the List's current head node, making the
@@ -67,22 +68,16 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
-        try:
-            forward = self.head
-            backward = self.tail
-            while forward is not backward or forward.prev is not backward:
-                if forward is not node or backward is not node:
-                    forward = forward.next
-                    backward = backward.prev
-                elif forward is node:
-                    forward.prev.next = forward.next
-                    forward.next.prev = forward.prev
-                else:
-                    backward.prev.next = backward.next
-                    backward.next.prev = backward.prev
-            self.add_to_head(node)
-        except:
-            return 'Node not found'
+        loc = self.head
+        while loc.right is not None:
+            if node.value == loc.value:
+                loc.prev.next = loc.next
+                loc.next.prev = loc.prev
+                self.head.prev = node
+                self.head = self.head.prev
+
+            else:
+                loc = loc.right
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
