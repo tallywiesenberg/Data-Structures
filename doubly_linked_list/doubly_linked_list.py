@@ -68,16 +68,30 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List.
     """
     def move_to_front(self, node):
+        #set a location for iterating through the nodes of the list
         loc = self.head
+        #move right through nodes until input node is found in list
+        #or until we reach the end of the list
         while loc.right is not None:
-            if node.value == loc.value:
-                loc.prev.next = loc.next
-                loc.next.prev = loc.prev
-                self.head.prev = node
-                self.head = self.head.prev
+            #if we've found the input node in the list
+            if:
+                #break left/right bonds between node and its neighbors
 
+                #connect neighbors of input node to each other (left/right pointers should connect)
+
+                #set input node as left of head
+
+                #set old head as right of input node
+
+                #set input node as new head
+
+                #return True because node was found in list
+            #if we haven't found the node yet, we move right
             else:
+                #moe right
                 loc = loc.right
+        #Return false because input node was not found in list
+        return False
     """
     Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List.
