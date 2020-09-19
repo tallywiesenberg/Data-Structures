@@ -51,10 +51,19 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        value = self.head.value
-        self.head = self.head.next
-        self.length -= 1
-        return value
+        #If the DLL is empty, return nothing
+        if self.head is None:
+            return
+        #If DLL is not empty:
+        else:
+            #set head to the 2nd item
+            self.head = self.head.next
+            #save a copy of the original head (for return)
+            original_head = self.head.prev
+            #delete pointers to the previous head
+            self.head.prev.delete()
+        #return the original head
+        return original_head.value
             
     """
     Wraps the given value in a ListNode and inserts it 
