@@ -62,7 +62,7 @@ class DoublyLinkedList:
             original_head = self.head.prev
             #delete pointers to the previous head
             self.head.prev.delete()
-        #return the original head
+        #return the original head's value
         return original_head.value
             
     """
