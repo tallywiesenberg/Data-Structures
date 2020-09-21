@@ -42,6 +42,7 @@ class DoublyLinkedList:
         #If DLL has at least one node
         else:
             self.head.prev = node
+            node.next = self.head
             self.head = self.head.prev
         #Update length
         self.length += 1
@@ -71,10 +72,18 @@ class DoublyLinkedList:
     the old tail node's next pointer accordingly.
     """
     def add_to_tail(self, value):
-        node = ListNode(value, prev=self.tail, next=None)
-        self.tail.next = node
-        self.length += 1
-            
+        new_node = ListNode(value)
+        #If the DLL is empty
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        #If the DLL is not empty
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
+        
+        self.length +=1
     """
     Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
